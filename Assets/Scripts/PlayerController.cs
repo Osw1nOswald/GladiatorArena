@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,20 +15,19 @@ namespace UnityTutorial.PlayerControl
         [SerializeField] private float UpperLimit = -40f;
         [SerializeField] private float BottomLimit = 70f;
         [SerializeField] private float MouseSensitivity = 21.9f;
+
         private Rigidbody _playerRigidbody;
         private InputManager _inputManager;
         private Animator _animator;
         private bool _hasAnimator;
         private int _xVelHash;
         private int _yVelHash;
+        private int _attackHash;  // Р”Р»СЏ Р°С‚Р°РєРё
         private float _xRotation;
 
         private const float _walkSpeed = 2f;
         private const float _runSpeed = 6f;
         private Vector2 _currentVelocity;
-        
-
- 
 
         private void Start()
         {
@@ -38,15 +37,24 @@ namespace UnityTutorial.PlayerControl
 
             _xVelHash = Animator.StringToHash("X_Velocity");
             _yVelHash = Animator.StringToHash("Y_Velocity");
+            _attackHash = Animator.StringToHash("Attack");  // РҐРµС€ РґР»СЏ С‚СЂРёРіРіРµСЂР° Attack
+
+            Debug.Log("вњ… PlayerController РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ");
         }
 
         private void FixedUpdate()
         {
             Move();
         }
+
         private void LateUpdate()
         {
             CamMovements();
+        }
+
+        private void Update()
+        {
+            HandleAttack();  // РџСЂРѕРІРµСЂСЏРµРј Р°С‚Р°РєСѓ РєР°Р¶РґС‹Р№ РєР°РґСЂ
         }
 
         private void Move()
@@ -75,24 +83,33 @@ namespace UnityTutorial.PlayerControl
             float Mouse_X = _inputManager.Look.x;
             float Mouse_Y = _inputManager.Look.y;
 
-            // Держим камеру на уровне корня
             Camera.position = CameraRoot.position;
 
-            // Вертикальный поворот (наклон вверх/вниз)
             _xRotation -= Mouse_Y * MouseSensitivity * Time.deltaTime;
             _xRotation = Mathf.Clamp(_xRotation, UpperLimit, BottomLimit);
 
             Camera.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
 
-            // Горизонтальный поворот (поворот тела)
             transform.Rotate(Vector3.up, Mouse_X * MouseSensitivity * Time.deltaTime);
         }
 
+        // РќРѕРІС‹Р№ РјРµС‚РѕРґ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё Р°С‚Р°РєРё
+        private void HandleAttack()
+        {
+            if (_inputManager.AttackTriggered)
+            {
+                Debug.Log("РџРѕРїС‹С‚РєР° Р·Р°РїСѓСЃС‚РёС‚СЊ Р°С‚Р°РєСѓ...");
 
-
-
-
-
-
+                if (_hasAnimator)
+                {
+                    _animator.SetTrigger(_attackHash);
+                    Debug.Log("РўСЂРёРіРіРµСЂ Attack Р°РєС‚РёРІРёСЂРѕРІР°РЅ!");
+                }
+                else
+                {
+                    Debug.LogWarning("Animator РЅРµ РЅР°Р№РґРµРЅ!");
+                }
+            }
+        }
     }
 }

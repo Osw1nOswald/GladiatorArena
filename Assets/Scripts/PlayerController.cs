@@ -22,7 +22,6 @@ namespace UnityTutorial.PlayerControl
         private bool _hasAnimator;
         private int _xVelHash;
         private int _yVelHash;
-        private int _attackHash;  // Для атаки
         private float _xRotation;
 
         private const float _walkSpeed = 2f;
@@ -37,9 +36,8 @@ namespace UnityTutorial.PlayerControl
 
             _xVelHash = Animator.StringToHash("X_Velocity");
             _yVelHash = Animator.StringToHash("Y_Velocity");
-            _attackHash = Animator.StringToHash("Attack");  // Хеш для триггера Attack
 
-            Debug.Log("✅ PlayerController инициализирован");
+            Debug.Log("PlayerController инициализирован");
         }
 
         private void FixedUpdate()
@@ -50,11 +48,6 @@ namespace UnityTutorial.PlayerControl
         private void LateUpdate()
         {
             CamMovements();
-        }
-
-        private void Update()
-        {
-            HandleAttack();  // Проверяем атаку каждый кадр
         }
 
         private void Move()
@@ -91,25 +84,6 @@ namespace UnityTutorial.PlayerControl
             Camera.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
 
             transform.Rotate(Vector3.up, Mouse_X * MouseSensitivity * Time.deltaTime);
-        }
-
-        // Новый метод для обработки атаки
-        private void HandleAttack()
-        {
-            if (_inputManager.AttackTriggered)
-            {
-                Debug.Log("Попытка запустить атаку...");
-
-                if (_hasAnimator)
-                {
-                    _animator.SetTrigger(_attackHash);
-                    Debug.Log("Триггер Attack активирован!");
-                }
-                else
-                {
-                    Debug.LogWarning("Animator не найден!");
-                }
-            }
         }
     }
 }

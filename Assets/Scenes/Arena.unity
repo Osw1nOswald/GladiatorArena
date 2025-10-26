@@ -17675,7 +17675,7 @@ Transform:
   m_GameObject: {fileID: 919132148043539178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7067495, y: 0.995, z: 1.258}
+  m_LocalPosition: {x: -0.7067495, y: 0.96, z: 1.258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18214,6 +18214,7 @@ GameObject:
   - component: {fileID: 5866666020873921071}
   - component: {fileID: 5866666020873921070}
   - component: {fileID: 5866666020873921069}
+  - component: {fileID: 5866666020873921072}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -23342,6 +23343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnityTutorial.PlayerControl.PlayerController
   AnimBlendSpeed: 8.9
+  WalkSpeed: 2
+  RunSpeed: 6
   CameraRoot: {fileID: 1754478858}
   Camera: {fileID: 714737657}
   UpperLimit: -40
@@ -23377,6 +23380,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5866666020873921072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148043539178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbcc192a5e9756749a369bf489ff6bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  healthBar: {fileID: 1659377005}
+  maxHealth: 100
+  currentHealth: 100
 --- !u!4 &5901452234099763923
 Transform:
   m_ObjectHideFlags: 0

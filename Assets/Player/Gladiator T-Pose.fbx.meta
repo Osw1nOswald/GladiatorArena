@@ -301,7 +301,7 @@ ModelImporter:
       scale: {x: 11.25085, y: 11.250853, z: 23.396704}
     - name: Armor
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0, y: 0.0013479055, z: -0.00047595546}
+      position: {x: -0, y: 0.0013479056, z: -0.00047595546}
       rotation: {x: -0.70710677, y: 0, z: -0, w: 0.7071068}
       scale: {x: 48.453934, y: 48.453934, z: 48.453934}
     - name: ArmorArm
@@ -316,12 +316,12 @@ ModelImporter:
       scale: {x: 11.25085, y: 11.250853, z: 23.396704}
     - name: ArmorLeather
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0.0007617078, y: 0.002292197, z: -0.0004322263}
+      position: {x: -0.0007617077, y: 0.002292197, z: -0.00043222634}
       rotation: {x: 0.7449434, y: 0.07724776, z: 0.087611444, w: 0.656823}
       scale: {x: -20.719973, y: -34.43392, z: -7.6202736}
     - name: Belt
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0, y: 0.00030608365, z: -0.00058413827}
+      position: {x: -0, y: 0.00030608365, z: -0.0005841382}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 34.65075, y: 33.79032, z: 9.425849}
     - name: BeltIron
@@ -331,52 +331,52 @@ ModelImporter:
       scale: {x: 100, y: 100, z: 100}
     - name: Body
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0, y: 0.0011554173, z: -0.0005694798}
+      position: {x: -0, y: 0.0011554172, z: -0.0005694798}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 71.26598, y: 56.102062, z: 94.88191}
     - name: Cube.008
       parentName: Gladiator T-Pose(Clone)
-      position: {x: 0.0031970735, y: 0.0017698962, z: 0.0010424344}
+      position: {x: 0.0031970735, y: 0.0017698964, z: 0.0010424344}
       rotation: {x: 0.9976753, y: -0.065085106, z: 0.020156711, w: 0.0013147634}
       scale: {x: 9.175901, y: 4.6858454, z: 50.749805}
     - name: Cube.009
       parentName: Gladiator T-Pose(Clone)
-      position: {x: 0.0032399634, y: 0.0017642765, z: -0.000027654714}
+      position: {x: 0.0032399634, y: 0.0017642764, z: -0.000027654714}
       rotation: {x: 0.0650851, y: 0.9976753, z: -0.0013148212, w: 0.020156715}
       scale: {x: 15.941059, y: 9.002689, z: 4.4082875}
     - name: Cube.010
       parentName: Gladiator T-Pose(Clone)
-      position: {x: 0.0032786361, y: 0.0017592092, z: -0.0009925386}
+      position: {x: 0.003278636, y: 0.0017592092, z: -0.0009925386}
       rotation: {x: 0.0650851, y: 0.9976753, z: -0.0013148214, w: 0.020156715}
       scale: {x: 7.0790267, y: 5.6894336, z: 4.9137554}
     - name: Cylinder
       parentName: Gladiator T-Pose(Clone)
-      position: {x: 0.0032539878, y: 0.0017624387, z: -0.00037756466}
+      position: {x: 0.003253987, y: 0.0017624386, z: -0.00037756463}
       rotation: {x: 0.0650851, y: 0.9976753, z: -0.0013148212, w: 0.020156715}
       scale: {x: 5.046815, y: 3.4381113, z: 26.35423}
     - name: Head
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0, y: 0.0027427287, z: -0.00025904982}
+      position: {x: -0, y: 0.0027427285, z: -0.00025904982}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 58.544296, y: 58.544296, z: 58.544296}
     - name: Helmet
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0, y: 0.0008531622, z: -0.00019920987}
+      position: {x: -0, y: 0.00085316226, z: -0.00019920987}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: -28.244009, y: -28.244009, z: -28.244009}
     - name: HelmetHair
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0, y: 0.0008474113, z: -0.00019920987}
+      position: {x: -0, y: 0.00084741134, z: -0.00019920987}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: -28.244009, y: -28.244009, z: -28.244009}
     - name: Legs
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0.00028004474, y: -0.00080350164, z: -0.0005980957}
+      position: {x: -0.0002800447, y: -0.00080350164, z: -0.0005980957}
       rotation: {x: -0.7070153, y: 0.011380705, z: -0.011380702, w: 0.7070152}
       scale: {x: 10.885192, y: 10.885193, z: 41.231316}
     - name: Scirt
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0, y: 0, z: -0.00057114643}
+      position: {x: -0, y: 0, z: -0.0005711464}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 29.889511, y: 29.889511, z: 29.889511}
     - name: Shoes
@@ -386,7 +386,7 @@ ModelImporter:
       scale: {x: 10.885192, y: 10.885193, z: 41.231316}
     - name: mixamorig:Hips
       parentName: Gladiator T-Pose(Clone)
-      position: {x: -0.000000019582709, y: 0.0044014393, z: 0.000003540225}
+      position: {x: -0.000000019582709, y: 0.0044014393, z: 0.0000035402245}
       rotation: {x: -0.00000033172788, y: -0.0000011294582, z: 0.00003122575, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Spine
@@ -401,12 +401,12 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
-      position: {x: -0, y: 0.000610488, z: 0}
+      position: {x: -0, y: 0.00061048794, z: 0}
       rotation: {x: -1.7347235e-18, y: -0, z: 8.598583e-29, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Neck
       parentName: mixamorig:Spine2
-      position: {x: -0, y: 0.00068679865, z: -5.196522e-11}
+      position: {x: -0, y: 0.0006867986, z: -5.196522e-11}
       rotation: {x: -0.013446115, y: 4.568638e-14, z: 2.2678001e-13, w: 0.99990964}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Head
@@ -416,17 +416,17 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:HeadTop_End
       parentName: mixamorig:Head
-      position: {x: -0, y: 0.0014962301, z: 0.0002800086}
+      position: {x: -0, y: 0.00149623, z: 0.0002800086}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftShoulder
       parentName: mixamorig:Spine2
-      position: {x: -0.00033920794, y: 0.0005962024, z: 0.0000015495922}
+      position: {x: -0.00033920797, y: 0.0005962024, z: 0.0000015495921}
       rotation: {x: 0.5631992, y: -0.42817247, z: 0.5606135, w: 0.43033412}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftArm
       parentName: mixamorig:LeftShoulder
-      position: {x: -7.105428e-20, y: 0.0007319024, z: -2.8421711e-19}
+      position: {x: -7.105428e-20, y: 0.0007319023, z: -2.8421711e-19}
       rotation: {x: -0.13265747, y: 0.00019501956, z: 0.0023766498, w: 0.99115914}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftForeArm
@@ -441,42 +441,42 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightShoulder
       parentName: mixamorig:Spine2
-      position: {x: 0.00033920794, y: 0.0005962502, z: 0.0000033229755}
+      position: {x: 0.00033920797, y: 0.0005962501, z: 0.0000033229755}
       rotation: {x: 0.5646157, y: 0.4271626, z: -0.5591248, w: 0.43141702}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightArm
       parentName: mixamorig:RightShoulder
-      position: {x: -0, y: 0.0007319024, z: 0}
+      position: {x: -0, y: 0.0007319023, z: 0}
       rotation: {x: -0.1325853, y: 0.00020024707, z: -0.004981613, w: 0.9911591}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightForeArm
       parentName: mixamorig:RightArm
-      position: {x: -0, y: 0.0008370793, z: 2.8421711e-19}
+      position: {x: -0, y: 0.00083707925, z: 2.8421711e-19}
       rotation: {x: -0.00000040582574, y: 0.0005381228, z: 0.00000036322075, w: 0.9999999}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightHand
       parentName: mixamorig:RightForeArm
-      position: {x: 7.105428e-20, y: 0.0008385638, z: 0}
+      position: {x: 7.105428e-20, y: 0.0008385637, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftUpLeg
       parentName: mixamorig:Hips
-      position: {x: -0.0002688406, y: -0.0002536694, z: 0.000006202699}
+      position: {x: -0.0002688406, y: -0.0002536694, z: 0.0000062026984}
       rotation: {x: -0.000016002923, y: -0.0028828501, z: 0.99999386, w: -0.0020087427}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftLeg
       parentName: mixamorig:LeftUpLeg
-      position: {x: 3.552714e-20, y: 0.0017974997, z: 0}
+      position: {x: 3.552714e-20, y: 0.0017974996, z: 0}
       rotation: {x: -0.0284657, y: 0.00013564454, z: -0.004274069, w: 0.9995856}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftFoot
       parentName: mixamorig:LeftLeg
-      position: {x: 3.552714e-20, y: 0.0016461487, z: 1.4210856e-19}
+      position: {x: 3.552714e-20, y: 0.0016461486, z: 1.4210856e-19}
       rotation: {x: 0.5108343, y: -0.017306209, z: -0.008100418, w: 0.8594668}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftToeBase
       parentName: mixamorig:LeftFoot
-      position: {x: -3.552714e-20, y: 0.0013171193, z: 5.6843423e-19}
+      position: {x: -3.552714e-20, y: 0.0013171192, z: 5.6843423e-19}
       rotation: {x: 0.27055427, y: 0.009452356, z: -0.002656587, w: 0.96265465}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftToe_End
@@ -486,17 +486,17 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightUpLeg
       parentName: mixamorig:Hips
-      position: {x: 0.0002688406, y: -0.0002536694, z: 0.000011914978}
+      position: {x: 0.0002688406, y: -0.0002536694, z: 0.000011914977}
       rotation: {x: 0.0000029793, y: -0.009415682, z: 0.99995357, w: 0.0020729902}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightLeg
       parentName: mixamorig:RightUpLeg
-      position: {x: -0, y: 0.0017975004, z: 0}
+      position: {x: -0, y: 0.0017975003, z: 0}
       rotation: {x: -0.016531311, y: -0.00011091184, z: 0.004279267, w: 0.9998542}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightFoot
       parentName: mixamorig:RightLeg
-      position: {x: -3.552714e-20, y: 0.0016454526, z: 0}
+      position: {x: -3.552714e-20, y: 0.0016454525, z: 0}
       rotation: {x: 0.51151526, y: 0.016825238, z: 0.007904047, w: 0.8590731}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightToeBase

@@ -10,11 +10,13 @@ namespace UnityTutorial.Manager
         public Vector2 Move { get; private set; }
         public Vector2 Look { get; private set; }
         public bool Run { get; private set; }
+        public bool AttackPressed { get; private set; } // 👈 Новое свойство
 
         private InputActionMap _currentMap;
         private InputAction _moveAction;
         private InputAction _lookAction;
         private InputAction _runAction;
+        private InputAction _attackAction; // 👈 Новое поле
 
         private void Awake()
         {
@@ -24,14 +26,17 @@ namespace UnityTutorial.Manager
             _moveAction = _currentMap.FindAction("Move");
             _lookAction = _currentMap.FindAction("Look");
             _runAction = _currentMap.FindAction("Run");
+            _attackAction = _currentMap.FindAction("Attack"); // 👈 Ищем действие
 
             _moveAction.performed += onMove;
             _lookAction.performed += onLook;
             _runAction.performed += onRun;
+            _attackAction.performed += onAttack; // 👈 Добавляем обработчик
 
             _moveAction.canceled += onMove;
             _lookAction.canceled += onLook;
             _runAction.canceled += onRun;
+            _attackAction.canceled += onAttack; // 👈 Чтобы отпускание сбрасывало
         }
 
         private void HideCursor()
@@ -53,6 +58,11 @@ namespace UnityTutorial.Manager
         private void onRun(InputAction.CallbackContext context)
         {
             Run = context.ReadValueAsButton();
+        }
+
+        private void onAttack(InputAction.CallbackContext context)
+        {
+            AttackPressed = context.ReadValueAsButton();
         }
     }
 }

@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         if (healthBar != null)
         {
-            healthBar.maxHealth = maxHealth;
+            healthBar.maxHealth = maxHealth;    
             healthBar.health = currentHealth;
         }
     }
@@ -38,4 +38,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Игрок умер!");
         // позже можно добавить экран смерти, анимацию и т.д.
     }
+
+
+
 }

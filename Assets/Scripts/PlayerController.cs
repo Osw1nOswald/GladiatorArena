@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityTutorial.Manager;
 
@@ -18,6 +17,7 @@ namespace UnityTutorial.PlayerControl
         [SerializeField] private float UpperLimit = -40f;
         [SerializeField] private float BottomLimit = 70f;
         [SerializeField] private float MouseSensitivity = 21.9f;
+        [SerializeField] private float CameraFollowSpeed = 20f; // сглаживание
 
         private Rigidbody _playerRigidbody;
         private InputManager _inputManager;
@@ -31,6 +31,9 @@ namespace UnityTutorial.PlayerControl
         private Vector2 _currentVelocity;
         private float _xRotation;
 
+        private Vector2 _smoothedLook;     // сглаживание мыши
+        private Vector2 _currentLookVel;   // вспомогательная переменная для SmoothDamp
+
         private bool _isAttacking = false;
 
         private void Start()
@@ -39,11 +42,13 @@ namespace UnityTutorial.PlayerControl
             _playerRigidbody = GetComponent<Rigidbody>();
             _inputManager = GetComponent<InputManager>();
 
+            _playerRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+
             _xVelHash = Animator.StringToHash("X_Velocity");
             _yVelHash = Animator.StringToHash("Y_Velocity");
             _attackHash = Animator.StringToHash("Attack");
 
-            Debug.Log("PlayerController инициализирован");
+            Debug.Log("PlayerController инициализирован без рывков");
         }
 
         private void Update()
@@ -54,6 +59,7 @@ namespace UnityTutorial.PlayerControl
         private void FixedUpdate()
         {
             Move();
+            RotatePlayer();
         }
 
         private void LateUpdate()
@@ -63,81 +69,70 @@ namespace UnityTutorial.PlayerControl
 
         private void Move()
         {
-            if (!_hasAnimator) return; // во время атаки двигаемся
+            if (!_hasAnimator) return;
 
             float targetSpeed = _inputManager.Run ? RunSpeed : WalkSpeed;
             if (_inputManager.Move == Vector2.zero)
-                targetSpeed = 0.1f;
+                targetSpeed = 0f;
 
-            _currentVelocity.x = Mathf.Lerp(
-                _currentVelocity.x,
-                _inputManager.Move.x * targetSpeed,
-                AnimBlendSpeed * Time.fixedDeltaTime);
+            _currentVelocity.x = Mathf.Lerp(_currentVelocity.x, _inputManager.Move.x * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
+            _currentVelocity.y = Mathf.Lerp(_currentVelocity.y, _inputManager.Move.y * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
 
-            _currentVelocity.y = Mathf.Lerp(
-                _currentVelocity.y,
-                _inputManager.Move.y * targetSpeed,
-                AnimBlendSpeed * Time.fixedDeltaTime);
-
-            var xVelDifference = _currentVelocity.x - _playerRigidbody.linearVelocity.x;
-            var zVelDifference = _currentVelocity.y - _playerRigidbody.linearVelocity.z;
-
-            _playerRigidbody.AddForce(
-                transform.TransformVector(new Vector3(xVelDifference, 0, zVelDifference)),
-                ForceMode.VelocityChange);
+            Vector3 targetVelocity = transform.TransformDirection(new Vector3(_currentVelocity.x, _playerRigidbody.linearVelocity.y, _currentVelocity.y));
+            _playerRigidbody.linearVelocity = targetVelocity;
 
             _animator.SetFloat(_xVelHash, _currentVelocity.x);
             _animator.SetFloat(_yVelHash, _currentVelocity.y);
         }
 
+        private void RotatePlayer()
+        {
+            // сглаживаем мышь, чтобы не было скачков
+            _smoothedLook = Vector2.SmoothDamp(_smoothedLook, _inputManager.Look, ref _currentLookVel, 0.01f);
+
+            transform.Rotate(Vector3.up, _smoothedLook.x * MouseSensitivity * Time.fixedDeltaTime);
+        }
+
         private void CamMovements()
         {
-            if (!_hasAnimator) return;
+            // Камера плавно следует за корнем
+            Camera.position = Vector3.Lerp(Camera.position, CameraRoot.position, CameraFollowSpeed * Time.deltaTime);
 
-            float Mouse_X = _inputManager.Look.x;
-            float Mouse_Y = _inputManager.Look.y;
-
-            Camera.position = CameraRoot.position;
-
-            _xRotation -= Mouse_Y * MouseSensitivity * Time.deltaTime;
+            _xRotation -= _smoothedLook.y * MouseSensitivity * Time.deltaTime;
             _xRotation = Mathf.Clamp(_xRotation, UpperLimit, BottomLimit);
 
             Camera.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
-            transform.Rotate(Vector3.up, Mouse_X * MouseSensitivity * Time.deltaTime);
         }
 
         private void HandleAttack()
         {
             if (!_hasAnimator) return;
 
-            // Если атака нажата и сейчас не идёт другая атака
             if (_inputManager.AttackPressed && !_isAttacking)
             {
                 StartCoroutine(AttackRoutine());
             }
         }
-
         private IEnumerator AttackRoutine()
         {
             _isAttacking = true;
             _animator.SetTrigger(_attackHash);
 
-            // ждём пока анимация проиграется
             yield return new WaitForSeconds(GetAttackAnimationLength());
             _isAttacking = false;
         }
 
         private float GetAttackAnimationLength()
         {
-            // попытаемся получить длину текущей анимации атаки из Animator
             if (_animator == null) return 1f;
+
             var clips = _animator.runtimeAnimatorController.animationClips;
             foreach (var clip in clips)
             {
                 if (clip.name.ToLower().Contains("attack"))
                     return clip.length;
             }
-            return 1f; // если не нашли — значение по умолчанию
+            return 1f;
         }
     }
 }

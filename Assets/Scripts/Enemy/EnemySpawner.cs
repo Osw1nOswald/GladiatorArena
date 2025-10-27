@@ -1,26 +1,28 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public Transform[] spawnPoints;
-    public float spawnInterval = 5f;
+    [Header("Настройки спавна")]
+    public GameObject enemyToSpawn; // 👈 ПЕРЕИМЕНОВАЛ
+    public float spawnTime = 3f;
 
-    private float timer;
-
-    void Update()
+    void Start()
     {
-        timer += Time.deltaTime;
-        if (timer >= spawnInterval)
-        {
-            SpawnEnemy();
-            timer = 0f;
-        }
+        InvokeRepeating("SpawnEnemy", spawnTime, spawnTime);
     }
 
     void SpawnEnemy()
     {
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+        if (enemyToSpawn != null) // 👈 И ЗДЕСЬ ИЗМЕНИ
+        {
+            Instantiate(enemyToSpawn, transform.position, transform.rotation);
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 1f);
     }
 }

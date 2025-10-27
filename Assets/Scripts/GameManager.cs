@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount * Mathf.Max(1, combo); // множитель комбо
-        scoreText.text = "Очки: " + score;
+        scoreText.text = "Score: " + score;
     }
 
     public void AddTime(float seconds)
@@ -54,6 +54,6 @@ public class GameManager : MonoBehaviour
 
     private void UpdateComboText()
     {
-        comboText.text = combo > 0 ? "Комбо x" + combo : "";
+        comboText.text = combo > 0 ? "Combo x" + combo : "";
     }
 }

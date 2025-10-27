@@ -1,33 +1,48 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class PlayerHitBox : MonoBehaviour
 {
-    [Header("Настройки урона")]
+    [Header("РќР°СЃС‚СЂРѕР№РєРё СѓСЂРѕРЅР°")]
+    public Collider swordCollider; // РїРµСЂРµС‚Р°С‰Рё СЃСЋРґР° РєРѕР»Р»Р°Р№РґРµСЂ РјРµС‡Р°
     public float damage = 25f;
-    private bool canDamage = false; // активен ли урон
+
+    private bool canDamage = false;
+    private bool hasHit = false;
+
+    private void Start()
+    {
+        if (swordCollider != null)
+            swordCollider.enabled = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!canDamage) return;
+        if (!canDamage || hasHit) return;
 
-        // Проверяем, враг ли это
         EnemyHealth enemy = other.GetComponent<EnemyHealth>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
-            Debug.Log($"Меч попал во {other.name}, нанесено {damage} урона!");
-            Debug.Log($"Trigger сработал на {other.name}");
+            hasHit = true;
+            Debug.Log($"РњРµС‡ РїРѕРїР°Р» РІРѕ {other.name}, РЅР°РЅРµСЃРµРЅРѕ {damage} СѓСЂРѕРЅР°!");
         }
     }
 
-    // Эти методы вызываются анимацией
+    // рџ”№ Р­С‚Рё РјРµС‚РѕРґС‹ РІС‹Р·С‹РІР°СЋС‚СЃСЏ Р°РЅРёРјР°С†РёРµР№
     public void EnableDamage()
     {
         canDamage = true;
+        hasHit = false;
+        if (swordCollider != null)
+            swordCollider.enabled = true;
+        Debug.Log("РЈСЂРѕРЅ РІРєР»СЋС‡С‘РЅ");
     }
 
     public void DisableDamage()
     {
         canDamage = false;
+        if (swordCollider != null)
+            swordCollider.enabled = false;
+        Debug.Log("РЈСЂРѕРЅ РІС‹РєР»СЋС‡РµРЅ");
     }
 }
